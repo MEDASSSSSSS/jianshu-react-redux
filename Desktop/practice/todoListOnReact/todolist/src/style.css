@@ -1,0 +1,28 @@
+.input{
+	width: 200px;
+	height: 30px;
+	line-height: 30px;
+	box-sizing: border-box;
+	padding-left: 10px;
+	border:1px solid #06f;
+	border-radius: 4px;
+}
+.button{
+	height: 30px;
+	background-color: #06f;
+	box-sizing: border-box;
+	border:1px solid #06f;
+	border-radius: 4px;
+	margin-left: 10px;
+}
+.item{
+	width: 90%;
+	border:3px solid #ddd;
+	border-radius: 4px;
+	margin: 5px auto;
+	box-sizing: border-box;
+	padding:5px;
+}
+.item:hover{
+	background-color: #ddd;
+}
