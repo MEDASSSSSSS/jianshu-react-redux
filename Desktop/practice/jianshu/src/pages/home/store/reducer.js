@@ -29,6 +29,7 @@ const defaultState=fromJS({
 	writerInfo:[],
 	curPageOfWriter:0,
 	totalPageOfWriter:0,
+	scrollTop:true,
 })
 
 export default (state = defaultState, action) => {
@@ -47,7 +48,8 @@ export default (state = defaultState, action) => {
 			return state.merge({
 				listItem:state.get('listItem').concat(fromJS(action.data))
 			})
-
+		case 'toggle_back_top':
+			return state.set('scrollTop',action.data)
 		default:
 			return state
 	}

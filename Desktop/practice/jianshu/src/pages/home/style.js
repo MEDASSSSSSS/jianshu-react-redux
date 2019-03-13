@@ -242,14 +242,14 @@ export const AllWriter = styled.div`
 `
 export const BackTop = styled.div`
 	position:fixed;
-	right:100px;
-	bottom:100px;
+	right:30px;
+	bottom:30px;
 	font-size:12px;
-	line-height:60px;
+	line-height:50px;
 	text-align:center;
-	width:60px;
-	height:60px;
-	border:2px solid #666;
-	border-radius:50%;
+	width:50px;
+	height:50px;
+	border:1px solid #ccc;
 	background-color:#fff;
+	cursor:pointer;
 `

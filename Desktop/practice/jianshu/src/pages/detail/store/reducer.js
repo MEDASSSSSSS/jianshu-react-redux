@@ -3,9 +3,10 @@ import * as constants from './constants'
 
 const defaultState = fromJS(
 	{
-	userInfo:{nickname:'aaa'},
+	userInfo:{},
 	title:'',
-	content:''
+	content:'',
+	showScroll:false,
 }
 );
 
@@ -15,7 +16,10 @@ export default (state = defaultState, action) => {
 			return state.merge({
 				title:action.title,
 				content:action.content,
+				userInfo:action.userInfo,
 			});
+		case constants.CHANGE_SHOW_SCROLL:
+			return state.set('showScroll',action.data)
 		default:
 			return state;
 	}

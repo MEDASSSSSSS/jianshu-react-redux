@@ -11,13 +11,17 @@ export const nextPage = (curPage) => ({
 	type:'change_page',
 	curPageOfWriter:curPage
 })
+export const toggleBackAction = (data) =>({
+	type:'toggle_back_top',
+	data
+})
 export const getLoadMore = () => {
 	return (dispatch) => {
-		axios.get('./api/articleList.json').then((res) =>{
-			const action = setMoreList(res.data.articles)
+		axios.get('/api/articleList.json').then((res) =>{
+			const action = setMoreList(res.data.data)
+			console.log(res.data);
 			dispatch(action)
-			}
-		).catch(console.log('error'))
+			}).catch(console.log('list load more error'))
 	};
 }
 export const getInfo = () =>{
@@ -25,6 +29,7 @@ export const getInfo = () =>{
 		axios.get('/api/writersInfo.json').then((src) => 
 			{	
 				const action = setWriterInfo(src.data.users);
+				console.log(src.data)
 				dispatch(action);
 			}
 		).catch(

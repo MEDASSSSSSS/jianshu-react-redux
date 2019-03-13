@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import List from './components/List';
 import Recommend from './components/Recommend';
 import Topic from './components/Topic';
 import Writer from './components/Writer';
+import { actionCreators } from './store'
+
 
 import { HomeWrapper,HomeLeft, HomeRight,Download,BackTop } from './style';
 
@@ -32,10 +35,39 @@ class Home extends PureComponent{
 					<Writer>
 					</Writer>
 				</HomeRight>
-				<BackTop onClick={this.handleScrollTop}>回到顶部</BackTop>
+				{this.props.scrollTop? <BackTop onClick={this.handleScrollTop}>回到顶部</BackTop>:null}
+				
 			</HomeWrapper>
 		)
 	}
+	componentDidMount(){
+		this.bindEvent()
+	}
+	componentWillUnmount(){
+		window.removeEventListener('scroll',this.props.toggleHomeScrollBack)
+	}
+	bindEvent(){
+		window.addEventListener('scroll',this.props.toggleHomeScrollBack)
+
+	}
 }
 
-export default Home
+const mapState = (state)=>({
+	
+	scrollTop: state.getIn(['home','scrollTop'])
+})
+
+const mapDispatch = (dispatch)=>{
+	return {
+		toggleHomeScrollBack(){
+			if(document.documentElement.scrollTop>200){
+				const action = actionCreators.toggleBackAction(true)
+				dispatch(action)
+			}else{
+				const action = actionCreators.toggleBackAction(false)
+				dispatch(action)
+			}
+		}
+	}
+}
+export default connect(mapState,mapDispatch)(Home)

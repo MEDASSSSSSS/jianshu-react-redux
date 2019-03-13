@@ -19,7 +19,7 @@ class Login extends PureComponent {
 			)
 		}else{
 			console.log('back')
-			return <Redirect to='/'/>
+			return (<Redirect to='/'/>)
 		}
 	}
 }
@@ -37,4 +37,4 @@ const mapDispatch = (dispatch) => {
 	}
 }
 
-export default connect(null,mapDispatch)(Login)
+export default connect(mapState,mapDispatch)(Login)
